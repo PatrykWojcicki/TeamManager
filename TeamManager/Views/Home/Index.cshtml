@@ -1,0 +1,41 @@
+﻿@model IEnumerable<TeamManager.Models.Groups>
+@using Microsoft.AspNetCore.Authentication
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Dzisiejsze treningi</h2>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Grupa
+            </th>
+
+            <th>
+                Godzina Treningu
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            if (item.PLtoEN() == DateTime.Today.DayOfWeek.ToString())
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.groupName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TrainingTime)
+                    </td>
+                    <td>
+                        <a asp-controller="KarateKids" asp-action="Index2" class="btn-primary btn" asp-route-groupId="@item.ID">Sprawdź obecność</a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

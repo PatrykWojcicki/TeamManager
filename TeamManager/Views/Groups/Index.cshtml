@@ -1,0 +1,55 @@
+﻿@model IEnumerable<TeamManager.Models.Groups>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Spis grup</h2>
+
+<p>
+    <a asp-action="Create">Stwórz grupę</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Grupa
+            </th>
+            <th>
+                Dzień treningu
+            </th>
+            <th>
+                Godzina Treningu
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.groupName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TrainingDay)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TrainingTime)
+            </td>
+            <td>
+
+
+                <div class="btn-group">
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Dane
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right" role="menu">
+                        <li><a asp-action="Edit" asp-route-id="@item.ID">Edytuj</a></li>
+                        <li><a asp-action="Members" asp-route-id="@item.ID">Członkowie</a></li>
+                        <li><a asp-action="Delete" asp-route-id="@item.ID">Usuń grupę</a></li>
+                    </div>
+                </div>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

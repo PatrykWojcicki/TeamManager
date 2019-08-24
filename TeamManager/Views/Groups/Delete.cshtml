@@ -1,0 +1,37 @@
+﻿@model TeamManager.Models.Groups
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+
+<h3>Czy napewno chcesz usunąć tę grupę?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.groupName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.groupName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TrainingDay)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TrainingDay)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TrainingTime)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TrainingTime)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="ID" />
+        <input type="submit" value="Usuń" class="btn btn-danger" />  
+        <a asp-action="Index" class="btn btn-primary">Wróć</a>
+    </form>
+</div>

@@ -1,0 +1,35 @@
+﻿@model IEnumerable<TeamManager.Models.DateModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Historia Płatności</h2>
+
+<p>
+    <a asp-action="Create">Dodaj płatność</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Opłacone miesiące
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        { if (item.ItIsPayment == true)
+            {
+            <tr>
+                <td>
+                    @{string Month = item.NumberToMonth();}
+                    @Html.DisplayFor(modelItem => Month)
+                    @Html.DisplayFor(modelItem => item.ActualDate.Year)
+                </td>
+            </tr>
+            }
+        }
+    </tbody>
+</table>

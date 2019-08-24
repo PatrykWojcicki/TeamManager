@@ -1,0 +1,43 @@
+﻿@model TeamManager.Models.KarateKid
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edytuj</h2>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ID" />
+            <div class="form-group">
+                <label asp-for="name" class="control-label">Imie i nazwisko</label>
+                <input asp-for="name" class="form-control" />
+                <span asp-validation-for="name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="phone" class="control-label">Nr. telefonu</label>
+                <input asp-for="phone" class="form-control" />
+                <span asp-validation-for="phone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Group" class="control-label">Grupa</label>
+                <span asp-validation-for="Group" class="text-danger"></span>
+                <select asp-for="Group" class="form-control @Html.DisplayFor(modelItem => Model.TrialCopy)">
+                @foreach (var item in Model.TrialCopy) {
+                <option value="@Html.DisplayName(item)">@Html.DisplayName(item)</option>}
+        </select>
+            </div>
+                        <div class="form-group">
+                            <input type="submit" value="Zapisz" class="btn btn-success" />
+                        </div>
+            </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Wróć</a>
+</div>
+

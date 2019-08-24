@@ -1,0 +1,31 @@
+﻿@model IEnumerable<TeamManager.Models.DateModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Historia obecności</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Obecności
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+                <tr>
+                    <td>
+                        @{string Month = item.NumberToMonth();}
+                        @Html.DisplayFor(modelItem => item.ActualDate.Day)
+                        @Html.DisplayFor(modelItem => Month)
+                        @Html.DisplayFor(modelItem => item.ActualDate.Year)
+                    </td>
+                </tr>
+        }
+    </tbody>
+</table>

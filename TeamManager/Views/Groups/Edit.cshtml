@@ -1,0 +1,40 @@
+﻿@model TeamManager.Models.Groups
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edytuj</h2>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ID" />
+            <div class="form-group">
+                <label asp-for="groupName" class="control-label">Grupa</label>
+                <input asp-for="groupName" class="form-control" />
+                <span asp-validation-for="groupName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TrainingDay" class="control-label">Dzień treningu</label>
+                <select asp-for="TrainingDay" asp-items="@Html.GetEnumSelectList<Day>()" class="form-control"></select>
+                <span asp-validation-for="TrainingDay" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TrainingTime" class="control-label">Godzina treningu</label>
+                <input asp-for="TrainingTime" class="form-control" />
+                <span asp-validation-for="TrainingTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Zapisz" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Wróć</a>
+</div>
+

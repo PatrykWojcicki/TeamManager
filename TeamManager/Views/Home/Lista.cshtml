@@ -1,0 +1,28 @@
+﻿@model IEnumerable<TeamManager.Models.KarateKid>
+@{
+    ViewBag.Title = "Lista";}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Cehcy języka C#</title>
+</head>
+<body class="p-1">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr><td>Imie</td><td>Telefon</td><td>Czy opłacone</td><td>Grupa</td></tr>
+        </thead>
+        <tbody>
+            @foreach (var p in Model)
+            {
+                <tr>
+                    <td>@p.name</td>
+                    <td>@p.phone</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>
