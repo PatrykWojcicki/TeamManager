@@ -43,16 +43,22 @@ namespace TeamManager
 
 
 
-            services.AddDbContext<KarateKidDbContext>(options => options.UseSqlServer(
-                Configuration["Data:TeamManagerKids:ConnectionString"]));
-            services.AddTransient<IKidsRepository, EFKaratekidRepository>();
-            services.AddMvc();
-            services.AddDbContext<KarateKidDbContext>(options => options.UseSqlServer(
-                Configuration["Data:TeamManagerGroups:ConnectionString"]));
-            services.AddTransient<IGroupsRepository, EFGroupsRepository>();
+            //services.AddDbContext<KarateKidDbContext>(options => options.UseSqlServer(
+            //    Configuration["Data:TeamManagerKids:ConnectionString"]));
+            //services.AddTransient<IKidsRepository, EFKaratekidRepository>();
+            //services.AddMvc();
+            //services.AddDbContext<KarateKidDbContext>(options => options.UseSqlServer(
+            //    Configuration["Data:TeamManagerGroups:ConnectionString"]));
+            //services.AddTransient<IGroupsRepository, EFGroupsRepository>();
+
+            //services.AddDbContext<KarateKidDbContext>(options => options.UseSqlServer(
+            //  Configuration["Data:TeamManagerDateModel:ConnectionString"]));
+            //services.AddTransient<IDateModelRepository, EFDateModelRepository>();
+
+
 
             services.AddDbContext<KarateKidDbContext>(options => options.UseSqlServer(
-              Configuration["Data:TeamManagerDateModel:ConnectionString"]));
+            Configuration["Data:teammanager20190825105012dbserve:ConnectionString"]));
             services.AddTransient<IDateModelRepository, EFDateModelRepository>();
 
             services.AddMvc();
@@ -91,8 +97,8 @@ namespace TeamManager
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
-            KidsData.EnsureKids(app);
-            KidsData.EnsureGroups(app);
+            //KidsData.EnsureKids(app);
+            //KidsData.EnsureGroups(app);
         }
     }
 }
